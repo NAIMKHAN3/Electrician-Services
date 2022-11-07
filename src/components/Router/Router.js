@@ -1,4 +1,5 @@
 import Home from "../Home/Home";
+import ServiceDetails from "../ServiceDetails/ServiceDetails";
 import Services from "../Services/Services";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -15,6 +16,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/services', element: <Services></Services>
+            },
+            {
+                path: '/services/:id',
+                loader: ({ params }) => {
+                    return fetch(`http://localhost:5000/services/${params.id}`)
+                },
+                element: <ServiceDetails></ServiceDetails>
             }
         ]
     },

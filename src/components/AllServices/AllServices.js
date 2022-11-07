@@ -18,7 +18,7 @@ const AllServices = ({ service }) => {
                 <p className="font-normal text-gray-700 dark:text-gray-400">
                     {description.slice(0, 100)}....
                 </p>
-                <Link to={`/service/${_id}`}><Button>See Details</Button></Link>
+                <Link to={`/services/${_id}`}><Button>See Details</Button></Link>
             </Card>
 
         </div>
