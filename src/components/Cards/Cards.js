@@ -1,5 +1,7 @@
 import { Card } from 'flowbite-react';
 import React from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const Cards = ({ service }) => {
   const { name, description, image, price } = service;
@@ -9,7 +11,11 @@ const Cards = ({ service }) => {
       <Card>
         <div className='grid grid-cols-2 gap-4'>
           <div>
-            <img src={image} alt="" />
+            <PhotoProvider>
+              <PhotoView src={image}>
+                <img src={image} alt="" />
+              </PhotoView>
+            </PhotoProvider>
           </div>
 
           <div>

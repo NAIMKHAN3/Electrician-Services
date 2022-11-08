@@ -1,6 +1,8 @@
 import { Button, Card } from 'flowbite-react';
 import React from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const DetailsOne = ({ service }) => {
     console.log(service)
@@ -9,7 +11,12 @@ const DetailsOne = ({ service }) => {
         <div className="lg:w-2/4 mx-auto mt-5">
             <Card className=''>
                 <div>
-                    <img className='w-full' src={image} alt="" />
+
+                    <PhotoProvider>
+                        <PhotoView src={image}>
+                            <img className='w-full' src={image} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
                 </div>
 
                 <div>
