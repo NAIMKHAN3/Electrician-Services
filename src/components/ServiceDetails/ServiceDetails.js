@@ -1,3 +1,4 @@
+import { Button } from 'flowbite-react';
 import React from 'react';
 import { Link, Outlet, useLoaderData } from 'react-router-dom';
 import AllReview from '../AllReview/AllReview';
@@ -10,7 +11,7 @@ const ServiceDetails = () => {
     return (
         <div>
             <DetailsOne key={service._id} service={service}></DetailsOne>
-            <Link to={`/addreview/${_id}`}> <button service={service}>Add Review</button></Link>
+            <Link to={`/addreview/${_id}`}> <Button service={service}>Add Review</Button></Link>
             <AllReview></AllReview>
         </div>
     );
