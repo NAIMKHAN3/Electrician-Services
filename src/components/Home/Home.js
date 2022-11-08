@@ -10,6 +10,8 @@ import slider3 from './image/slider3.jpg'
 
 
 const Home = () => {
+    const date = new Date()
+    console.log(date)
     const [services, setServices] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/service')

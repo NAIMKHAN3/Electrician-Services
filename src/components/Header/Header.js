@@ -66,11 +66,21 @@ const Header = () => {
                 </div>
                 <Navbar.Collapse>
                     <Link to='/home'>Home</Link>
-                    <Link to='/reviews'>My-reviews</Link>
-                    <Link to='/addservice'>Add-service</Link>
-                    <Link to='/login'>Log-In</Link>
-                    <Link to='/register'>Register</Link>
-                    <button onClick={signOut} color="light border-none">Log Out</button>
+                    <Link to='/services'>Services</Link>
+                    {
+                        user?.uid ? <>
+                            <Link to='/reviews'>My-reviews</Link>
+                            <Link to='/addservice'>Add-service</Link>
+                            <button onClick={signOut} color="light border-none">Log Out</button>
+                        </>
+                            : <>
+                                <Link to='/login'>Log-In</Link>
+                                <Link to='/register'>Register</Link>
+                            </>
+                    }
+
+
+
                 </Navbar.Collapse>
             </Navbar>
         </div>

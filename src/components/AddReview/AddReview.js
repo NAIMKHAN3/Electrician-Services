@@ -25,7 +25,8 @@ const AddReview = () => {
         const userEmail = form.userEmail.value;
         const photo = form.photo.value;
         const review = form.review.value;
-        const reviews = { serviceName, userName, userEmail, photo, review, }
+        const date = new Date()
+        const reviews = { serviceName, userName, userEmail, photo, review, date }
         fetch('http://localhost:5000/addreview', {
             method: 'POST',
             headers: {
