@@ -1,5 +1,6 @@
-import { Card } from 'flowbite-react';
+import { Button, Card } from 'flowbite-react';
 import React from 'react';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const DetailsOne = ({ service }) => {
     console.log(service)
@@ -21,6 +22,12 @@ const DetailsOne = ({ service }) => {
                     <p className="font-normal text-gray-700 dark:text-gray-400">
                         {description}
                     </p>
+                </div>
+                <div>
+                    <Button>
+                        <FaShoppingCart className="mr-2 h-5 w-5" />
+                        Buy now
+                    </Button>
                 </div>
             </Card>
         </div >

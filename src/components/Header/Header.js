@@ -1,8 +1,15 @@
-import { Avatar, Dropdown, Navbar } from 'flowbite-react';
-import React from 'react';
+import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../UserContext/UserContext';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const signOut = () => {
+        logOut()
+            .then(result => { })
+            .catch(e => console.log(e))
+    }
     return (
         <div>
             <Navbar
@@ -23,14 +30,14 @@ const Header = () => {
                     <Dropdown
                         arrowIcon={false}
                         inline={true}
-                        label={<Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true} />}
+                        label={<Avatar alt="User settings" img={user?.photoURL} rounded={true} />}
                     >
                         <Dropdown.Header>
                             <span className="block text-sm">
-                                Bonnie Green
+                                {user?.displayName}
                             </span>
                             <span className="block truncate text-sm font-medium">
-                                name@flowbite.com
+                                {user?.email}
                             </span>
                         </Dropdown.Header>
                         <Dropdown.Item>
@@ -43,7 +50,7 @@ const Header = () => {
                             Earnings
                         </Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item>
+                        <Dropdown.Item onClick={signOut}>
                             Sign out
                         </Dropdown.Item>
                     </Dropdown>
@@ -55,7 +62,7 @@ const Header = () => {
                     <Link to='/service'>Add-service</Link>
                     <Link to='/login'>Log-In</Link>
                     <Link to='/register'>Register</Link>
-                    <Link to='/logout'>Log-Out</Link>
+                    <button onClick={signOut} color="light border-none">Log Out</button>
                 </Navbar.Collapse>
             </Navbar>
         </div>
