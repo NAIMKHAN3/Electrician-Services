@@ -59,7 +59,7 @@ const Header = () => {
                 <Navbar.Collapse>
                     <Link to='/home'>Home</Link>
                     <Link to='/reviews'>My-reviews</Link>
-                    <Link to='/service'>Add-service</Link>
+                    <Link to='/addservice'>Add-service</Link>
                     <Link to='/login'>Log-In</Link>
                     <Link to='/register'>Register</Link>
                     <button onClick={signOut} color="light border-none">Log Out</button>

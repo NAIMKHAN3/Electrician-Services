@@ -1,10 +1,11 @@
-import { Card } from 'flowbite-react';
+import { Button, Card } from 'flowbite-react';
 import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { Link } from 'react-router-dom';
 
 const Cards = ({ service }) => {
-  const { name, description, image, price } = service;
+  const { name, description, image, price, _id } = service;
 
   return (
     <div className="lg:w-2/4 mx-auto mt-5">
@@ -28,8 +29,10 @@ const Cards = ({ service }) => {
             <p className="font-normal text-gray-700 dark:text-gray-400">
               {description.slice(0, 100)}...
             </p>
+            <Link to={`/services/${_id}`}><Button className='mx-auto mt-3 text-end'>See Details</Button></Link>
           </div>
         </div>
+
       </Card>
     </div >
   );

@@ -1,4 +1,5 @@
 import AddReview from "../AddReview/AddReview";
+import AddService from "../AddService/AddService";
 import Home from "../Home/Home";
 import LogIn from "../LogIn/LogIn";
 import MyReview from "../MyReview/MyReview";
@@ -20,6 +21,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/reviews', element: <MyReview></MyReview>
+            },
+            {
+                path: '/addservice', element: <AddService></AddService>
             },
             {
                 path: '/services', element: <Services></Services>

@@ -16,33 +16,40 @@ const MyReview = () => {
             .catch(e => console.log(e))
     }, [user])
     return (
-        <div>
-            <Table>
-                <Table.Head>
-                    <Table.HeadCell>
-                        User Photo
-                    </Table.HeadCell>
-                    <Table.HeadCell>
-                        User Name
-                    </Table.HeadCell>
-                    <Table.HeadCell>
-                        User Email
-                    </Table.HeadCell>
-                    <Table.HeadCell>
-                        Review
-                    </Table.HeadCell>
-                    <Table.HeadCell>
-                        <span className="sr-only">
-                            Edit
-                        </span>
-                    </Table.HeadCell>
-                </Table.Head>
-                <Table.Body className="divide-y">
-                    {
-                        myAllReviews.map(myAllReview => <MyReviewCard key={myAllReview._id} myAllReview={myAllReview}></MyReviewCard>)
-                    }
-                </Table.Body>
-            </Table>
+        <div className='lg:w-2/3 mx-auto'>
+            {
+                myAllReviews.length ?
+                    <Table>
+                        <Table.Head>
+                            <Table.HeadCell>
+                                User Photo
+                            </Table.HeadCell>
+                            <Table.HeadCell>
+                                Service Name
+                            </Table.HeadCell>
+                            <Table.HeadCell>
+                                User Name
+                            </Table.HeadCell>
+                            <Table.HeadCell>
+                                User Email
+                            </Table.HeadCell>
+                            <Table.HeadCell>
+                                Review
+                            </Table.HeadCell>
+                            <Table.HeadCell>
+                                <span className="sr-only">
+                                    Edit
+                                </span>
+                            </Table.HeadCell>
+                        </Table.Head>
+                        <Table.Body className="divide-y">
+                            {
+                                myAllReviews.map(myAllReview => <MyReviewCard key={myAllReview._id} myAllReview={myAllReview}></MyReviewCard>)
+                            }
+                        </Table.Body>
+                    </Table>
+                    : <h1 className='text-3xl text-center font-bold'>No review Founds</h1>
+            }
 
         </div>
     );
