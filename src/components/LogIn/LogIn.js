@@ -1,9 +1,11 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React from 'react';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const LogIn = () => {
     return (
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4 lg:w-2/4 mx-auto border-solid border-2 border-sky-500 p-16 my-10">
+            <h1 className='text-3xl font-bold text-center'>Log In</h1>
             <div>
                 <div className="mb-2 block">
                     <Label
@@ -37,9 +39,27 @@ const LogIn = () => {
                 />
             </div>
 
-            <Button type="submit">
+            <Button className='my-5' type="submit">
                 Log In
             </Button>
+            <hr />
+            <div className='flex justify-center items-center'>
+                <div className='mx-auto text-center'>
+                    <h5 className='text-1xl font-bold'>Sign in Google</h5>
+                    <Button color="light border-none">
+
+                        <FaGoogle className='text-3xl font-bold'></FaGoogle>
+
+                    </Button>
+                </div>
+                <div className='mx-auto text-center'>
+                    <h5 className='text-1xl font-bold'>Sign in GitHub</h5>
+                    <Button color="light border-none">
+                        <FaGithub className='text-3xl font-bold text-center'></FaGithub>
+                    </Button>
+
+                </div>
+            </div>
         </form>
     );
 };

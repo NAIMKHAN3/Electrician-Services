@@ -1,4 +1,6 @@
 import Home from "../Home/Home";
+import LogIn from "../LogIn/LogIn";
+import Register from "../Register/Register";
 import ServiceDetails from "../ServiceDetails/ServiceDetails";
 import Services from "../Services/Services";
 
@@ -16,6 +18,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/services', element: <Services></Services>
+            },
+            {
+                path: '/login', element: <LogIn></LogIn>
+            },
+            {
+                path: '/register', element: <Register></Register>
             },
             {
                 path: '/services/:id',
