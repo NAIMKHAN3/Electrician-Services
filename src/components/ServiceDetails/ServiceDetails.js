@@ -1,18 +1,41 @@
 import { Button } from 'flowbite-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useLoaderData } from 'react-router-dom';
 import AllReview from '../AllReview/AllReview';
 import DetailsOne from '../DetailsOne/DetailsOne';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
-    const { _id } = service.data;
-    console.log(service)
+    const [reviewses, setReviewses] = useState([]);
+    const { _id, name } = service.data;
+    useEffect(() => {
+        fetch(`http://localhost:5000/allreviews?name=${name}`)
+            .then(res => res.json())
+            .then(data => setReviewses(data.data))
+            .catch(e => console.log(e))
+    }, [])
     return (
         <div>
             <DetailsOne key={service._id} service={service}></DetailsOne>
-            <Link to={`/addreview/${_id}`}> <Button service={service}>Add Review</Button></Link>
-            <AllReview></AllReview>
+
+            <Link to={`/addreview/${_id}`}>  <Button className='text-center mx-auto mt-10 '
+                outline={true}
+                gradientDuoTone="purpleToPink"
+            >
+                Add Review
+            </Button></Link>
+
+            <div>
+                <h5 className="text-3xl font-bold text-center mt-5 leading-none text-gray-900 dark:text-white">
+                    Latest Reviews
+                </h5>
+                <div className='grid lg:grid-cols-3 gap-4 lg:p-24'>
+
+                    {
+                        reviewses.map(reviews => <AllReview key={reviews._id} reviews={reviews}></AllReview>)
+                    }
+                </div>
+            </div>
         </div>
     );
 };

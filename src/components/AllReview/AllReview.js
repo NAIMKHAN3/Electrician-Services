@@ -1,48 +1,36 @@
 import { Card } from 'flowbite-react';
 import React from 'react';
 
-const AllReview = () => {
+const AllReview = ({ reviews }) => {
+    const { userName, userEmail, photo, review } = reviews;
     return (
-        <div className="">
-            <Card>
-                <div className="mb-4 flex items-center justify-between">
-                    <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-                        Latest Customers
-                    </h5>
+
+
+
+
+        <div className=" mx-auto mt-5 min-w-full">
+            <Card className=' h-[300px]'>
+                <div className="flex justify-end px-4 pt-4">
 
                 </div>
-                <div className="flow-root">
-                    <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-                        <li className="py-3 sm:py-4">
-                            <div className="flex items-center space-x-4">
-                                <div className="shrink-0">
-                                    <img
-                                        className="h-8 w-8 rounded-full"
-                                        src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                                        alt="Neil image"
-                                    />
-                                </div>
-                                <div className="min-w-0 flex-1">
-                                    <p className="truncate text-sm font-medium text-gray-900 dark:text-white">
-                                        Neil Sims
-                                    </p>
-                                    <p className="truncate text-sm text-gray-500 dark:text-gray-400">
-                                        email@windster.com
-                                    </p>
-                                </div>
-                                <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                    $320
-                                </div>
-                            </div>
-                        </li>
+                <div className="flex flex-col items-center pb-10">
+                    <img className="mb-3 h-24 w-24 rounded-full shadow-lg" src={photo} alt="" />
+                    <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                        {userName}
+                    </h5>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {userEmail}
+                    </span>
+                    <p>{review.slice(0, 70)}.....</p>
+                    <div className="mt-4 flex space-x-3 lg:mt-6">
 
 
-
-
-                    </ul>
+                    </div>
                 </div>
             </Card>
         </div>
+
+
     );
 };
 

@@ -5,7 +5,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
 const DetailsOne = ({ service }) => {
-    console.log(service)
+
     const { name, image, description, price } = service.data;
     return (
         <div className="lg:w-2/4 mx-auto mt-5">
