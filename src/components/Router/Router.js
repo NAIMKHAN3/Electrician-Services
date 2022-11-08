@@ -1,3 +1,4 @@
+import AddReview from "../AddReview/AddReview";
 import Home from "../Home/Home";
 import LogIn from "../LogIn/LogIn";
 import Register from "../Register/Register";
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/register', element: <Register></Register>
+            },
+            {
+                path: '/addreview/:id',
+                loader: ({ params }) => { return fetch(`http://localhost:5000/addreview/${params.id}`) },
+                element: <AddReview></AddReview>
             },
             {
                 path: '/services/:id',

@@ -1,14 +1,17 @@
 import React from 'react';
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Link, Outlet, useLoaderData } from 'react-router-dom';
+import AllReview from '../AllReview/AllReview';
 import DetailsOne from '../DetailsOne/DetailsOne';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
+    const { _id } = service.data;
     console.log(service)
     return (
         <div>
             <DetailsOne key={service._id} service={service}></DetailsOne>
-            <Outlet></Outlet>
+            <Link to={`/addreview/${_id}`}> <button service={service}>Add Review</button></Link>
+            <AllReview></AllReview>
         </div>
     );
 };
