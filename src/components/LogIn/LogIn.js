@@ -2,11 +2,20 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../UserContext/UserContext';
 
 const LogIn = () => {
     const { signIn, signInGoogle, signInGithub } = useContext(AuthContext)
     const Navigate = useNavigate();
+
+    const toast = () => {
+        return Swal.fire(
+            'Success!',
+            'Successfully log in!',
+            'success'
+        )
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,19 +24,25 @@ const LogIn = () => {
         signIn(email, password)
             .then(result => {
                 Navigate('/home')
-                console.log(result.user)
+                toast();
             })
             .catch(e => console.log(e))
 
     }
     const handleGoogle = () => {
         signInGoogle()
-            .then(result => { Navigate('/home') })
+            .then(result => {
+                Navigate('/home')
+                toast()
+            })
             .catch(e => console.log(e))
     }
     const handleGithub = () => {
         signInGithub()
-            .then(resut => { Navigate('/home') })
+            .then(resut => {
+                Navigate('/home')
+                toast()
+            })
             .catch(e => console.log(e))
     }
     return (

@@ -1,13 +1,21 @@
 import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../UserContext/UserContext';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
+    const toast = () => {
+        return Swal.fire(
+            'Success!',
+            'Log Out success!',
+            'success'
+        )
+    }
     const signOut = () => {
         logOut()
-            .then(result => { })
+            .then(result => { toast() })
             .catch(e => console.log(e))
     }
     return (
