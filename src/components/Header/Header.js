@@ -73,6 +73,7 @@ const Header = () => {
                 <Navbar.Collapse>
                     <Link to='/home'>Home</Link>
                     <Link to='/services'>Services</Link>
+                    <Link to='/blog'>Blog</Link>
                     {
                         user?.uid ? <>
                             <Link to='/reviews'>My-reviews</Link>
@@ -84,9 +85,7 @@ const Header = () => {
                                 <Link to='/register'>Register</Link>
                             </>
                     }
-
-
-
+                    <Link to='/blog'>Blog</Link>
                 </Navbar.Collapse>
             </Navbar>
         </div>
