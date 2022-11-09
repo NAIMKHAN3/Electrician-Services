@@ -2,9 +2,11 @@ import { Button, Label, Textarea, TextInput } from 'flowbite-react';
 import React from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useTitle from '../UseTitle';
 
 const EditReview = () => {
     const reviewOne = useLoaderData();
+    useTitle('Edit review')
     const Navigate = useNavigate();
     const date = new Date();
     const { serviceName, review, userEmail, userName, photo, _id } = reviewOne?.data;

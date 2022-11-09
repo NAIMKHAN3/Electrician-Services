@@ -4,10 +4,6 @@ import React from 'react';
 const AllReview = ({ reviews }) => {
     const { userName, userEmail, photo, review, date, serviceName } = reviews;
     return (
-
-
-
-
         <div className=" mx-auto mt-5 min-w-full">
             <Card className=' h-[300px]'>
                 <div className="flex justify-end px-4 pt-4">

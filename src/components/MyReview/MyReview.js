@@ -3,10 +3,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import MyReviewCard from '../MyReviewCard/MyReviewCard';
 import { AuthContext } from '../UserContext/UserContext';
+import useTitle from '../UseTitle';
 
 const MyReview = () => {
     const { user } = useContext(AuthContext)
-
+    useTitle('My review')
     const [myAllReviews, setMyAllReviews] = useState([])
     const [loading, setLoading] = useState(true)
     const [refresh, setRefresh] = useState(false)

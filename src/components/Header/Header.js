@@ -2,6 +2,7 @@ import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import logo from './image/logo.jpg'
 import { AuthContext } from '../UserContext/UserContext';
 
 const Header = () => {
@@ -31,12 +32,12 @@ const Header = () => {
             >
                 <Navbar.Brand href="https://flowbite.com/">
                     <img
-                        src="https://flowbite.com/docs/images/logo.svg"
+                        src={logo}
                         className="mr-3 h-6 sm:h-9"
                         alt="Flowbite Logo"
                     />
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                        Flowbite
+                        Electrician
                     </span>
                 </Navbar.Brand>
                 <div className="flex md:order-2">

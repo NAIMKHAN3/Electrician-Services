@@ -4,13 +4,15 @@ import { Link, useLoaderData, } from 'react-router-dom';
 import AllReview from '../AllReview/AllReview';
 import DetailsOne from '../DetailsOne/DetailsOne';
 import { AuthContext } from '../UserContext/UserContext';
+import useTitle from '../UseTitle';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
     const { user } = useContext(AuthContext);
     const [reviewses, setReviewses] = useState([]);
     const [loading, setLoading] = useState(true)
-    const { _id, name } = service.data;
+    const { _id, name } = service?.data;
+    useTitle('service && Review')
 
     useEffect(() => {
         fetch(`http://localhost:5000/allreviews?name=${name}`)

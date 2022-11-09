@@ -3,11 +3,13 @@ import React, { useContext } from 'react';
 import { Link, Navigate, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../UserContext/UserContext';
+import useTitle from '../UseTitle';
 
 const AddReview = () => {
+
     const { user } = useContext(AuthContext)
     const service = useLoaderData()
-    console.log(service)
+    useTitle('Add review')
     const { name, _id } = service.data;
     const Navigate = useNavigate();
     const location = useLocation();

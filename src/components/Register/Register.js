@@ -4,12 +4,14 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../UserContext/UserContext';
+import useTitle from '../UseTitle';
 
 const Register = () => {
     const { createUser, updateUserProfile, signInGoogle, signInGithub } = useContext(AuthContext)
     const Navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+    useTitle('Register')
 
     const toast = () => {
         return Swal.fire(

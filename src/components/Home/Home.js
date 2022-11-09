@@ -7,10 +7,11 @@ import banner from './image/banner.png'
 import slider1 from './image/slider1.png'
 import slider2 from './image/slider2.jpg'
 import slider3 from './image/slider3.jpg'
+import useTitle from '../UseTitle';
 
 
 const Home = () => {
-
+    useTitle('Home')
     const [services, setServices] = useState([])
     const [loading, setLoading] = useState(true)
 

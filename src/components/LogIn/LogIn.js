@@ -4,10 +4,12 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { json, Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../UserContext/UserContext';
+import useTitle from '../UseTitle';
 
 const LogIn = () => {
     const { signIn, signInGoogle, signInGithub } = useContext(AuthContext)
     const Navigate = useNavigate();
+    useTitle('Login')
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 

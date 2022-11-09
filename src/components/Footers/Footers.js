@@ -1,7 +1,9 @@
 import { Footer } from 'flowbite-react';
 import React from 'react';
+import logo from './image/logo.jpg'
 
 const Footers = () => {
+
     return (
         <Footer container={true}>
             <div className="w-full">
@@ -9,9 +11,9 @@ const Footers = () => {
                     <div>
                         <Footer.Brand
                             href="https://flowbite.com"
-                            src="https://flowbite.com/docs/images/logo.svg"
+                            src={logo}
                             alt="Flowbite Logo"
-                            name="Flowbite"
+                            name="Electrician web-site"
                         />
                     </div>
                     <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">

@@ -2,9 +2,11 @@ import { Button, Label, Textarea, TextInput } from 'flowbite-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useTitle from '../UseTitle';
 
 const AddService = () => {
     const Navigate = useNavigate();
+    useTitle('Add service')
 
     const toast = () => {
         return Swal.fire(

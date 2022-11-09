@@ -3,9 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import useTitle from '../UseTitle';
 
 const AllServices = ({ service }) => {
     const { name, image, price, description, _id } = service;
+    useTitle('services')
     return (
         <div className="mx-auto my-3 text-color-purple">
 
