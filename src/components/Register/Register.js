@@ -32,8 +32,8 @@ const Register = () => {
                 updateUserProfile(name, image)
                     .then(result => { })
                     .catch(e => console.log(e))
-                Navigate(from, { replace: true })
                 toast()
+                Navigate(from, { replace: true })
             })
             .catch(e => console.log(e))
     }

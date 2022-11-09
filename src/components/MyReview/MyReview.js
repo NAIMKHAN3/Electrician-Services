@@ -1,5 +1,6 @@
 import { Spinner, Table } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import MyReviewCard from '../MyReviewCard/MyReviewCard';
 import { AuthContext } from '../UserContext/UserContext';
 
@@ -8,6 +9,15 @@ const MyReview = () => {
 
     const [myAllReviews, setMyAllReviews] = useState([])
     const [loading, setLoading] = useState(true)
+    const [refresh, setRefresh] = useState(false)
+
+    const toast = () => {
+        return Swal.fire(
+            'Success!',
+            'Delete successfully!',
+            'success'
+        )
+    }
 
 
     useEffect(() => {
@@ -18,7 +28,23 @@ const MyReview = () => {
                 setLoading(false)
             })
             .catch(e => console.log(e))
-    }, [user])
+    }, [user, refresh])
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure, you want to delete Your Review');
+        if (proceed) {
+            fetch(`http://localhost:5000/deletereview/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    toast()
+                    setRefresh(!refresh)
+                })
+                .catch(e => console.log(e))
+        }
+
+    }
+
     return (
         <>
             {
@@ -50,14 +76,15 @@ const MyReview = () => {
                                     Review
                                 </Table.HeadCell>
                                 <Table.HeadCell>
-                                    <span className="sr-only">
-                                        Edit
-                                    </span>
+                                    Edit
+                                </Table.HeadCell>
+                                <Table.HeadCell>
+                                    Delete
                                 </Table.HeadCell>
                             </Table.Head>
                             <Table.Body className="divide-y">
                                 {
-                                    myAllReviews.map(myAllReview => <MyReviewCard key={myAllReview._id} myAllReview={myAllReview}></MyReviewCard>)
+                                    myAllReviews.map(myAllReview => <MyReviewCard key={myAllReview._id} myAllReview={myAllReview} handleDelete={handleDelete}></MyReviewCard>)
                                 }
                             </Table.Body>
                         </Table>

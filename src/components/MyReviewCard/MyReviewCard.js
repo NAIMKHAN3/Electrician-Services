@@ -1,8 +1,13 @@
 import { Table } from 'flowbite-react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const MyReviewCard = ({ myAllReview }) => {
+const MyReviewCard = ({ myAllReview, handleDelete }) => {
     const { userName, userEmail, _id, photo, review, serviceName } = myAllReview
+
+
+
+
     return (
         <>
             <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -22,12 +27,10 @@ const MyReviewCard = ({ myAllReview }) => {
                     {review.slice(0, 30)}......
                 </Table.Cell>
                 <Table.Cell>
-                    <a
-                        href="/tables"
-                        className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                    >
-                        Edit
-                    </a>
+                    <Link className='font-medium text-blue-600 hover:underline dark:text-blue-500' to={`/editreveiw/${_id}`}>Edit</Link>
+                </Table.Cell>
+                <Table.Cell>
+                    <button className='font-medium text-blue-600 hover:underline dark:text-blue-500' onClick={() => handleDelete(_id)} color="light border-none">Delete</button>
                 </Table.Cell>
             </Table.Row>
 

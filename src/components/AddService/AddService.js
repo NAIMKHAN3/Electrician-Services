@@ -1,8 +1,11 @@
 import { Button, Label, Textarea, TextInput } from 'flowbite-react';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const AddService = () => {
+    const Navigate = useNavigate();
+
     const toast = () => {
         return Swal.fire(
             'Success!',
@@ -26,8 +29,12 @@ const AddService = () => {
             body: JSON.stringify(services)
         })
             .then(res => res.json)
-            .then(data => toast())
+            .then(data => {
+                toast()
+                Navigate('/services')
+            })
             .catch(e => console.log(e))
+        form.reset();
 
     }
     return (
