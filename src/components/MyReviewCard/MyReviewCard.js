@@ -27,7 +27,7 @@ const MyReviewCard = ({ myAllReview, handleDelete }) => {
                     {review.slice(0, 30)}......
                 </Table.Cell>
                 <Table.Cell>
-                    <Link className='font-medium text-blue-600 hover:underline dark:text-blue-500' to={`/editreveiw/${_id}`}>Edit</Link>
+                    <Link className='font-medium text-blue-600 hover:underline dark:text-blue-500' to={`/editreview/${_id}`}>Edit</Link>
                 </Table.Cell>
                 <Table.Cell>
                     <button className='font-medium text-blue-600 hover:underline dark:text-blue-500' onClick={() => handleDelete(_id)} color="light border-none">Delete</button>
