@@ -34,7 +34,7 @@ const AddReview = () => {
         const review = form.review.value;
         const date = new Date();
         const reviews = { serviceName, userName, userEmail, photo, review, date }
-        fetch('http://localhost:5000/addreview', {
+        fetch('https://assignment-11-server-naimkhan3.vercel.app/addreview', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

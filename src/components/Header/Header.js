@@ -64,9 +64,13 @@ const Header = () => {
                             Earnings
                         </Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item onClick={signOut}>
-                            Sign out
-                        </Dropdown.Item>
+                        {
+                            user?.uid ? <Dropdown.Item onClick={signOut}>
+                                Sign out
+                            </Dropdown.Item> : <Dropdown.Item>
+                                <Link to='/login'>Log In</Link>
+                            </Dropdown.Item>
+                        }
                     </Dropdown>
                     <Navbar.Toggle />
                 </div>

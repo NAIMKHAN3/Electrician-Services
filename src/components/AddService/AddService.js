@@ -23,7 +23,7 @@ const AddService = () => {
         const price = form.price.value;
         const description = form.description.value;
         const services = { name, image, price, description }
-        fetch('http://localhost:5000/addservice', {
+        fetch('https://assignment-11-server-naimkhan3.vercel.app/addservice', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

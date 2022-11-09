@@ -29,7 +29,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/editreview/:id',
-                loader: ({ params }) => { return fetch(`http://localhost:5000/editreview/${params.id}`) },
+                loader: ({ params }) => { return fetch(`https://assignment-11-server-naimkhan3.vercel.app/editreview/${params.id}`) },
                 element: <PrivateRoute><EditReview></EditReview></PrivateRoute>
             },
             {
@@ -49,13 +49,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addreview/:id',
-                loader: ({ params }) => { return fetch(`http://localhost:5000/addreview/${params.id}`) },
+                loader: ({ params }) => { return fetch(`https://assignment-11-server-naimkhan3.vercel.app/addreview/${params.id}`) },
                 element: <PrivateRoute><AddReview></AddReview></PrivateRoute>
             },
             {
                 path: '/services/:id',
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/services/${params.id}`)
+                    return fetch(`https://assignment-11-server-naimkhan3.vercel.app/services/${params.id}`)
                 },
                 element: <ServiceDetails></ServiceDetails>
             }

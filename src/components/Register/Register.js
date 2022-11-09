@@ -34,7 +34,7 @@ const Register = () => {
                     .then(result => {
                         const user = result.user;
                         const currentUser = { email: user?.email };
-                        fetch('http://localhost:5000/jwt', {
+                        fetch('https://assignment-11-server-naimkhan3.vercel.app/jwt', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -59,7 +59,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 const currentUser = { email: user?.email };
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://assignment-11-server-naimkhan3.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -81,7 +81,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 const currentUser = { email: user?.email };
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://assignment-11-server-naimkhan3.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

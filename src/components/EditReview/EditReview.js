@@ -24,7 +24,7 @@ const EditReview = () => {
         const newReview = e.target.review.value;
         const editReview = { serviceName, userName, userEmail, photo, review: newReview, date }
 
-        fetch(`http://localhost:5000/editreview?id=${_id}`, {
+        fetch(`https://assignment-11-server-naimkhan3.vercel.app/editreview?id=${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

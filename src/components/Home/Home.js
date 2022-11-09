@@ -17,7 +17,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/service')
+        fetch('https://assignment-11-server-naimkhan3.vercel.app/service')
             .then(res => res.json())
             .then(data => {
                 setLoading(false)

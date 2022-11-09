@@ -22,7 +22,7 @@ const MyReview = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myreviews?email=${user?.email}`, {
+        fetch(`https://assignment-11-server-naimkhan3.vercel.app/myreviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -37,7 +37,7 @@ const MyReview = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure, you want to delete Your Review');
         if (proceed) {
-            fetch(`http://localhost:5000/deletereview/${id}`, {
+            fetch(`https://assignment-11-server-naimkhan3.vercel.app/deletereview/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

@@ -1,5 +1,5 @@
 import { Button, Label, TextInput } from 'flowbite-react';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { json, Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -9,6 +9,7 @@ import useTitle from '../UseTitle';
 const LogIn = () => {
     const { signIn, signInGoogle, signInGithub } = useContext(AuthContext)
     const Navigate = useNavigate();
+    const [error, setError] = useState('')
     useTitle('Login')
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -30,7 +31,7 @@ const LogIn = () => {
             .then(result => {
                 const user = result.user;
                 const currentUser = { email: user?.email };
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://assignment-11-server-naimkhan3.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -45,7 +46,10 @@ const LogIn = () => {
                 Navigate(from, { replace: true })
                 toast();
             })
-            .catch(e => console.log(e))
+            .catch(e => {
+                setError(e.message)
+                console.log(e)
+            })
 
     }
     const handleGoogle = () => {
@@ -53,7 +57,7 @@ const LogIn = () => {
             .then(result => {
                 const user = result.user;
                 const currentUser = { email: user?.email };
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://assignment-11-server-naimkhan3.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -75,7 +79,7 @@ const LogIn = () => {
             .then(result => {
                 const user = result.user;
                 const currentUser = { email: user?.email };
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://assignment-11-server-naimkhan3.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -127,6 +131,7 @@ const LogIn = () => {
                     shadow={true}
                 />
             </div>
+            <p className='text-rose-600'>{error}</p>
 
             <Button className='my-5' type="submit">
                 Log In
