@@ -1,13 +1,17 @@
 import { Button, Label, Textarea, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, Navigate, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../UserContext/UserContext';
 
 const AddReview = () => {
     const { user } = useContext(AuthContext)
     const service = useLoaderData()
-    const { name } = service.data;
+    console.log(service)
+    const { name, _id } = service.data;
+    const Navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || `/services/${_id}`;
 
     const toast = () => {
         return Swal.fire(
@@ -18,6 +22,7 @@ const AddReview = () => {
     }
 
     const handleAddReview = (e) => {
+
         e.preventDefault();
         const form = e.target;
         const serviceName = form.serviceName.value;
@@ -25,7 +30,7 @@ const AddReview = () => {
         const userEmail = form.userEmail.value;
         const photo = form.photo.value;
         const review = form.review.value;
-        const date = new Date()
+        const date = new Date();
         const reviews = { serviceName, userName, userEmail, photo, review, date }
         fetch('http://localhost:5000/addreview', {
             method: 'POST',
@@ -38,6 +43,8 @@ const AddReview = () => {
             .then(data => {
                 if (data.data.acknowledged) {
                     toast()
+                    Navigate(from, { replace: true })
+
                 }
                 else {
                     console.log('false')
@@ -45,7 +52,8 @@ const AddReview = () => {
 
             })
             .catch(e => console.log(e))
-        console.log(reviews)
+        form.reset();
+
     }
 
     return (
@@ -137,10 +145,12 @@ const AddReview = () => {
                     rows={4}
                 />
             </div>
-
             <Button className='my-5' type="submit">
                 Add Review
             </Button>
+            <Link to={`/services/${_id}`}>
+
+            </Link>
 
 
         </form>

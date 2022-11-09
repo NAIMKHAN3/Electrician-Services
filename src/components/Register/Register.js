@@ -1,13 +1,16 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../UserContext/UserContext';
 
 const Register = () => {
     const { createUser, updateUserProfile, signInGoogle, signInGithub } = useContext(AuthContext)
     const Navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    console.log(location)
 
     const toast = () => {
         return Swal.fire(
@@ -23,13 +26,13 @@ const Register = () => {
         const image = form.image.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { name, image, email, password }
+
         createUser(email, password)
             .then(result => {
                 updateUserProfile(name, image)
                     .then(result => { })
                     .catch(e => console.log(e))
-                Navigate('/home')
+                Navigate(from, { replace: true })
                 toast()
             })
             .catch(e => console.log(e))
@@ -38,7 +41,7 @@ const Register = () => {
     const handleGoogle = () => {
         signInGoogle()
             .then(result => {
-                Navigate('/home')
+                Navigate(from, { replace: true })
                 toast()
             })
             .catch(e => console.log(e))
@@ -46,7 +49,7 @@ const Register = () => {
     const handleGithub = () => {
         signInGithub()
             .then(resut => {
-                Navigate('/home')
+                Navigate(from, { replace: true })
                 toast()
             })
             .catch(e => console.log(e))

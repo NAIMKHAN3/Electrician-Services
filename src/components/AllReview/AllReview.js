@@ -2,7 +2,7 @@ import { Card } from 'flowbite-react';
 import React from 'react';
 
 const AllReview = ({ reviews }) => {
-    const { userName, userEmail, photo, review } = reviews;
+    const { userName, userEmail, photo, review, date, serviceName } = reviews;
     return (
 
 
@@ -21,6 +21,12 @@ const AllReview = ({ reviews }) => {
                     <span className="text-sm text-gray-500 dark:text-gray-400">
                         {userEmail}
                     </span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {date}
+                    </span>
+                    <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                        {serviceName}
+                    </h5>
                     <p>{review.slice(0, 70)}.....</p>
                     <div className="mt-4 flex space-x-3 lg:mt-6">
 

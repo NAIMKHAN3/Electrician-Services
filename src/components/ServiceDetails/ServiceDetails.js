@@ -1,21 +1,37 @@
-import { Button } from 'flowbite-react';
+import { Button, Spinner } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, } from 'react-router-dom';
 import AllReview from '../AllReview/AllReview';
 import DetailsOne from '../DetailsOne/DetailsOne';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
     const [reviewses, setReviewses] = useState([]);
+    const [loading, setLoading] = useState(true)
     const { _id, name } = service.data;
+
     useEffect(() => {
         fetch(`http://localhost:5000/allreviews?name=${name}`)
             .then(res => res.json())
-            .then(data => setReviewses(data.data))
+            .then(data => {
+                setLoading(false)
+                setReviewses(data.data)
+            })
             .catch(e => console.log(e))
-    }, [])
+
+    }, [name])
+
+
     return (
         <div>
+            {
+                loading && <div className="text-center">
+                    <Spinner
+                        aria-label="Extra large spinner example"
+                        size="xl"
+                    />
+                </div>
+            }
             <DetailsOne key={service._id} service={service}></DetailsOne>
 
             <Link to={`/addreview/${_id}`}>  <Button className='text-center mx-auto mt-10 '

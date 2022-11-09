@@ -1,4 +1,4 @@
-import { Button, Carousel } from 'flowbite-react';
+import { Button, Carousel, Spinner } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Cards from '../Cards/Cards';
@@ -10,17 +10,30 @@ import slider3 from './image/slider3.jpg'
 
 
 const Home = () => {
-    const date = new Date()
-    console.log(date)
+
     const [services, setServices] = useState([])
+    const [loading, setLoading] = useState(true)
+
+
     useEffect(() => {
         fetch('http://localhost:5000/service')
             .then(res => res.json())
-            .then(data => setServices(data.data))
+            .then(data => {
+                setLoading(false)
+                setServices(data.data)
+            })
             .catch(e => console.log(e))
     }, [])
     return (
         <div>
+            {
+                loading && <div className="text-center">
+                    <Spinner
+                        aria-label="Extra large spinner example"
+                        size="xl"
+                    />
+                </div>
+            }
             <img className='lg:w-3/4 mx-auto' src={banner} alt="" />
             <div className="h-56 sm:h-64 xl:h-80 2xl:h-96 lg:w-2/3 mx-auto my-10">
                 <Carousel>
