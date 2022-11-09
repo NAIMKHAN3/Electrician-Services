@@ -8,16 +8,20 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation();
     if (loading) {
         return <div className="text-center">
-            <Spinner aria-label="Center-aligned spinner example" />
+            <Spinner
+                aria-label="Extra large spinner example"
+                size="xl"
+            />
         </div>
     }
 
     if (user && user?.uid) {
         return children;
     }
-    if (!user && user.uid) {
-        return <Navigate to='/login' state={{ from: location }} replace></Navigate>
-    }
+
+
+    return <Navigate to='/login' state={{ from: location }} replace></Navigate>
+
 };
 
 export default PrivateRoute;

@@ -1,7 +1,7 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { json, Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../UserContext/UserContext';
 
@@ -26,6 +26,20 @@ const LogIn = () => {
         const password = e.target.password.value;
         signIn(email, password)
             .then(result => {
+                const user = result.user;
+                const currentUser = { email: user?.email };
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token)
+                    })
+                    .catch(e => console.log(e))
                 Navigate(from, { replace: true })
                 toast();
             })
@@ -35,6 +49,20 @@ const LogIn = () => {
     const handleGoogle = () => {
         signInGoogle()
             .then(result => {
+                const user = result.user;
+                const currentUser = { email: user?.email };
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token)
+                    })
+                    .catch(e => console.log(e))
                 Navigate(from, { replace: true })
                 toast()
             })
@@ -42,7 +70,21 @@ const LogIn = () => {
     }
     const handleGithub = () => {
         signInGithub()
-            .then(resut => {
+            .then(result => {
+                const user = result.user;
+                const currentUser = { email: user?.email };
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token)
+                    })
+                    .catch(e => console.log(e))
                 Navigate(from, { replace: true })
                 toast()
             })

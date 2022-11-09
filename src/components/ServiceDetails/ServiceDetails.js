@@ -1,11 +1,13 @@
 import { Button, Spinner } from 'flowbite-react';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData, } from 'react-router-dom';
 import AllReview from '../AllReview/AllReview';
 import DetailsOne from '../DetailsOne/DetailsOne';
+import { AuthContext } from '../UserContext/UserContext';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
+    const { user } = useContext(AuthContext);
     const [reviewses, setReviewses] = useState([]);
     const [loading, setLoading] = useState(true)
     const { _id, name } = service.data;
@@ -33,12 +35,18 @@ const ServiceDetails = () => {
                 </div>
             }
             <DetailsOne key={service._id} service={service}></DetailsOne>
+            {
+                !user?.uid && <h1 className='text-center mt-10 text-2xl text-orange-600'>Please <Link to='/login'>Log In</Link> and Add Review</h1>
+            }
 
-            <Link to={`/addreview/${_id}`}>  <Button className='text-center mx-auto mt-10 '
+
+            <Link to={`/addreview/${_id}`}>  <Button className='text-center mx-auto mt-5 mb-10 '
                 outline={true}
                 gradientDuoTone="purpleToPink"
             >
-                Add Review
+                {
+                    user?.uid ? <>Add Review </> : <>Log In</>
+                }
             </Button></Link>
 
             <div>

@@ -10,7 +10,6 @@ const Register = () => {
     const Navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    console.log(location)
 
     const toast = () => {
         return Swal.fire(
@@ -30,7 +29,22 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 updateUserProfile(name, image)
-                    .then(result => { })
+                    .then(result => {
+                        const user = result.user;
+                        const currentUser = { email: user?.email };
+                        fetch('http://localhost:5000/jwt', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(currentUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                localStorage.setItem('token', data.token)
+                            })
+                            .catch(e => console.log(e))
+                    })
                     .catch(e => console.log(e))
                 toast()
                 Navigate(from, { replace: true })
@@ -41,6 +55,20 @@ const Register = () => {
     const handleGoogle = () => {
         signInGoogle()
             .then(result => {
+                const user = result.user;
+                const currentUser = { email: user?.email };
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token)
+                    })
+                    .catch(e => console.log(e))
                 Navigate(from, { replace: true })
                 toast()
             })
@@ -48,7 +76,21 @@ const Register = () => {
     }
     const handleGithub = () => {
         signInGithub()
-            .then(resut => {
+            .then(result => {
+                const user = result.user;
+                const currentUser = { email: user?.email };
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token)
+                    })
+                    .catch(e => console.log(e))
                 Navigate(from, { replace: true })
                 toast()
             })

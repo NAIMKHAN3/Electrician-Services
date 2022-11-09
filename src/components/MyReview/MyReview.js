@@ -21,7 +21,11 @@ const MyReview = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myreviews?email=${user?.email}`)
+        fetch(`http://localhost:5000/myreviews?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setMyAllReviews(data.data)
@@ -57,7 +61,7 @@ const MyReview = () => {
             }
             <div className='lg:w-2/3 mx-auto'>
                 {
-                    myAllReviews.length ?
+                    myAllReviews?.length ?
                         <Table>
                             <Table.Head>
                                 <Table.HeadCell>
