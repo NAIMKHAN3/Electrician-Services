@@ -10,7 +10,6 @@ const AllServices = ({ service }) => {
     useTitle('services')
     return (
         <div className="mx-auto my-3 text-color-purple">
-
             <Card>
                 <h5 className="text-3xl text-center my-4 font-bold tracking-tight text-gray-900 dark:text-white">
                     {name}

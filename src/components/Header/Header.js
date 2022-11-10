@@ -34,25 +34,13 @@ const Header = () => {
                     <img
                         src={logo}
                         className="mr-3 h-6 sm:h-9"
-                        alt="Flowbite Logo"
+                        alt="my logo"
                     />
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
                         Electrician
                     </span>
                 </Navbar.Brand>
-                <div className='flex md:order-2'>
-                    <Tooltip
-                        content={user?.displayName}
-                    >
-                        <Avatar
-                            img={user?.photoURL}
-                            rounded={true}
-                        />
-                    </Tooltip>
-
-
-                    <Navbar.Toggle />
-                </div>
+                <Navbar.Toggle />
                 <Navbar.Collapse>
                     <Link to='/home'>Home</Link>
                     <Link to='/services'>Services</Link>
@@ -68,7 +56,6 @@ const Header = () => {
                                 <Link to='/register'>Register</Link>
                             </>
                     }
-
                 </Navbar.Collapse>
             </Navbar>
         </div>
