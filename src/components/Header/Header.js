@@ -1,4 +1,4 @@
-import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react';
+import { Avatar, Button, Dropdown, Navbar, Tooltip } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -30,7 +30,7 @@ const Header = () => {
                 fluid={true}
                 rounded={true}
             >
-                <Navbar.Brand href="https://flowbite.com/">
+                <Navbar.Brand href="/">
                     <img
                         src={logo}
                         className="mr-3 h-6 sm:h-9"
@@ -40,38 +40,17 @@ const Header = () => {
                         Electrician
                     </span>
                 </Navbar.Brand>
-                <div className="flex md:order-2">
-                    <Dropdown
-                        arrowIcon={false}
-                        inline={true}
-                        label={<Avatar alt="User settings" img={user?.photoURL} rounded={true} />}
+                <div className='flex md:order-2'>
+                    <Tooltip
+                        content={user?.displayName}
                     >
-                        <Dropdown.Header>
-                            <span className="block text-sm">
-                                {user?.displayName}
-                            </span>
-                            <span className="block truncate text-sm font-medium">
-                                {user?.email}
-                            </span>
-                        </Dropdown.Header>
-                        <Dropdown.Item>
-                            Dashboard
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                            Settings
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                            Earnings
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        {
-                            user?.uid ? <Dropdown.Item onClick={signOut}>
-                                Sign out
-                            </Dropdown.Item> : <Dropdown.Item>
-                                <Link to='/login'>Log In</Link>
-                            </Dropdown.Item>
-                        }
-                    </Dropdown>
+                        <Avatar
+                            img={user?.photoURL}
+                            rounded={true}
+                        />
+                    </Tooltip>
+
+
                     <Navbar.Toggle />
                 </div>
                 <Navbar.Collapse>
@@ -89,7 +68,7 @@ const Header = () => {
                                 <Link to='/register'>Register</Link>
                             </>
                     }
-                    <Link to='/blog'>Blog</Link>
+
                 </Navbar.Collapse>
             </Navbar>
         </div>

@@ -56,6 +56,7 @@ const Home = () => {
                 </div>
             </div>
             <div>
+                <h1 className='text-3xl text-center font-extrabold mt-10'>MY Services</h1>
                 {
                     services.map(service => <Cards key={service._id} service={service}></Cards>)
                 }

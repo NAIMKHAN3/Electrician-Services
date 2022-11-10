@@ -93,7 +93,7 @@ const MyReview = () => {
                                 }
                             </Table.Body>
                         </Table>
-                        : !loading && <h1 className='text-3xl text-center font-bold'>No review Founds</h1>
+                        : !loading && <h1 className='text-3xl font-bold  h-[200px] text-center mt-48'>No review Founds</h1>
                 }
 
             </div>
