@@ -10,7 +10,7 @@ const Cards = ({ service }) => {
   return (
     <div className="lg:w-2/4 mx-auto mt-5">
       <Card>
-        <div className='grid grid-cols-2 gap-4'>
+        <div className='grid lg:grid-cols-2 gap-4'>
           <div>
             <PhotoProvider>
               <PhotoView src={image}>
