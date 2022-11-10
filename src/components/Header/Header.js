@@ -37,7 +37,7 @@ const Header = () => {
                         alt="my logo"
                     />
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                        Electrician
+                        Electrician-Services
                     </span>
                 </Navbar.Brand>
                 <Navbar.Toggle />
